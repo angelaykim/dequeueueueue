@@ -1,12 +1,3 @@
-/*Theodre Peters
-APCS pd4
-HW18a -- DLLNode
-2017-03-16*/
-/*****************************************************
- * class LLNode
- * Implements a node, for use in lists and other container classes.
- *****************************************************/
-
 public class DLLNode {
 
     private String _cargo;    //cargo may only be of type String
@@ -31,20 +22,20 @@ public class DLLNode {
 
     //--------------v  MUTATORS  v--------------
     public String setCargo( String newCargo ) {
-	String ccc = _cargo;
+	String c = _cargo;
 	_cargo = newCargo;
-	return ccc;
+	return c;
     }
     
     public DLLNode setNext( DLLNode newNext ) {
-	DLLNode nerd = _nextNode;
+	DLLNode n = _nextNode;
 	_nextNode = newNext;
-	return nerd;
+	return n;
     }
     public DLLNode setPrev( DLLNode newPrev ) {
-	DLLNode perv = _prevNode;
+	DLLNode p = _prevNode;
 	_prevNode = newPrev;
-	return perv;
+	return p;
     }
     //--------------^  MUTATORS  ^--------------
 
