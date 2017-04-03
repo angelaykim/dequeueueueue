@@ -1,4 +1,4 @@
-public class Deck<T> implements Deque {
+public class Deck<T> implements Deque<T> {
 
     private DLLNode<T> _head, _tail;
     private int _size;
