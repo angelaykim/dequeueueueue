@@ -10,7 +10,7 @@ public interface Deque<T> extends Iterable<T>{
 
     //~~~~~~~~~~~~~~~~~~begin AP subset~~~~~~~~~~~~~~~~~~
 
-    /* ==================================================
+    
 
     // toString
     public String toString();
@@ -39,7 +39,7 @@ public interface Deque<T> extends Iterable<T>{
     // retrieves and removes, returns null if deque is empty.
     public T pollFirst();
     public T pollLast();
-
+    /* ==================================================
 
     // iterators
     Iterator<T> iterator();
