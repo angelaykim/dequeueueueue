@@ -1,5 +1,5 @@
 /*****************************************************
- * interface Queue
+ * interface Deque
  * Includes only methods listed in AP subset of Java
  * (Local version, to override built-in Java implementation.)
  ******************************************************/
