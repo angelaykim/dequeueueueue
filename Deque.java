@@ -6,7 +6,7 @@
 
 import java.util.Iterator;
 
-public interface Deque<T> extends Iterable<T>{
+public interface Deque<T> /*extends Iterable<T>*/{
 
     //~~~~~~~~~~~~~~~~~~begin AP subset~~~~~~~~~~~~~~~~~~
 
