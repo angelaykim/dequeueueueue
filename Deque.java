@@ -6,7 +6,7 @@
 
 import java.util.Iterator;
 
-public interface Deque<T> /*extends Iterable<T>*/{
+public interface Deque<T> extends Iterable<T>{
 
     //~~~~~~~~~~~~~~~~~~begin AP subset~~~~~~~~~~~~~~~~~~
 
@@ -39,11 +39,12 @@ public interface Deque<T> /*extends Iterable<T>*/{
     // retrieves and removes, returns null if deque is empty.
     public T pollFirst();
     public T pollLast();
-    /* ==================================================
+    
 
     // iterators
     Iterator<T> iterator();
     Iterator<T> descendingIterator();
+    /* ==================================================
     =================================================== */
 
     //~~~~~~~~~~~~~~~~~~~end AP subset~~~~~~~~~~~~~~~~~~~
