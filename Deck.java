@@ -1,3 +1,6 @@
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
 public class Deck<T> implements Deque<T> {
 
     private DLLNode<T> _head, _tail;
@@ -76,13 +79,55 @@ public class Deck<T> implements Deque<T> {
 	}
 	return retStr;
     }
-
+    public Iterator<T> iterator() {
+	return new MyIterator(true);
+    }
+    public Iterator<T> descendingIterator() {
+	return new MyIterator(false);
+    }
+    private class MyIterator implements Iterator<T> {
+	private DLLNode<T> _doofy;
+	private boolean _forward;
+	public MyIterator(boolean f) {
+	    _forward = f;
+	    if(f)
+		_doofy = new DLLNode<T>(null, _head,null);
+	    else
+		_doofy = new DLLNode<T>(null,null,_tail);
+	}
+	public boolean hasNext() {
+	    if (_forward)
+		return _doofy.getNext()!=null;
+	    else
+		return _doofy.getPrev()!=null;
+	}
+	public T next() {
+	    if( ! hasNext() )
+		throw new NoSuchElementException();
+	    if (_forward)
+		_doofy = _doofy.getNext();
+	    else
+		_doofy = _doofy.getPrev();
+	    return _doofy.getCargo();
+	}
+	public void remove() {
+	    throw new UnsupportedOperationException();
+	}
+    }
     public static void main(String args[]) {
 	Deck<String> dock = new Deck<String>();
-	dock.add("hello");
 	dock.add("friends");
-	dock.add("and");
+	dock.addFirst("hello");
+	dock.addLast("and");
 	dock.add("compatriots");
-	System.out.println(dock);
+	dock.add("guacamole");
+	dock.pollLast();
+	System.out.println(dock + "\n\nIteration:\n");
+	for(String igloo : dock)
+	    System.out.println(igloo);
+	
+	Iterator<String> otters = dock.descendingIterator();
+	while(otters.hasNext())
+	    System.out.println(otters.next());
     }
 }
