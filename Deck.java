@@ -60,20 +60,30 @@ public class Deck<T> implements Deque<T> {
 
     // Removes first item, returns it.
     public T pollFirst() {
-	T tmp = _head.getCargo();
-	_head = _head.getNext();
-	_head.setPrev( null );
-	_size--;
-	return tmp;
+	if ( _size == 0 ) {
+	    return null;
+	}
+	else {
+	    T tmp = _head.getCargo();
+	    _head = _head.getNext();
+	    _head.setPrev( null );
+	    _size--;
+	    return tmp;
+	}
     }
 
     // Removes last item, returns it.
     public T pollLast() {
-	T tmp = _tail.getCargo();
-	_tail = _tail.getPrev();
-	_tail.setNext( null );
-	_size--;
-	return tmp;
+	if ( _size == 0 ) {
+	    return null;
+	}
+	else {
+	    T tmp = _tail.getCargo();
+	    _tail = _tail.getPrev();
+	    _tail.setNext( null );
+	    _size--;
+	    return tmp;
+	}
     }
 
     // Returns true if deque is empty, false otherwise.
@@ -86,6 +96,7 @@ public class Deck<T> implements Deque<T> {
 	return _size;
     }
 
+    // Converts nodes into a more understandable string.
     public String toString() {
 	String retStr = "";
 	DLLNode<T> temp = _head;
