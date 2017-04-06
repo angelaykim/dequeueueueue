@@ -50,40 +50,52 @@ public class Deck<T> implements Deque<T> {
 
     // Returns first item in deque.
     public T peekFirst() {
+	if(isEmpty()){
+		return null;
+	}
 	return _head.getCargo();
     }
 
     // Returns last item in deque.
     public T peekLast() {
+	if(isEmpty()){
+		return null;
+	}
 	return _tail.getCargo();
     }
 
     // Removes first item, returns it.
     public T pollFirst() {
-	if ( _size == 0 ) {
-	    return null;
+	if(isEmpty()){
+		return null ;
 	}
-	else {
-	    T tmp = _head.getCargo();
-	    _head = _head.getNext();
-	    _head.setPrev( null );
-	    _size--;
-	    return tmp;
+	T tmp = _head.getCargo();
+	if(_size == 1){
+		_head = _tail;
+		_size--;
+		return tmp;
 	}
+	_head = _head.getNext();
+	_head.setPrev( null );
+	_size--;
+	return tmp;
     }
 
     // Removes last item, returns it.
     public T pollLast() {
-	if ( _size == 0 ) {
-	    return null;
+	if(isEmpty()){
+		return null;
 	}
-	else {
-	    T tmp = _tail.getCargo();
-	    _tail = _tail.getPrev();
-	    _tail.setNext( null );
-	    _size--;
-	    return tmp;
+	T tmp = _tail.getCargo();
+	if(_size == 1){
+		_tail = _head;
+		_size--;
+		return tmp;
 	}
+	_tail = _tail.getPrev();
+	_tail.setNext( null );
+	_size--;
+	return tmp;
     }
 
     // Returns true if deque is empty, false otherwise.
@@ -96,7 +108,6 @@ public class Deck<T> implements Deque<T> {
 	return _size;
     }
 
-    // Converts nodes into a more understandable string.
     public String toString() {
 	String retStr = "";
 	DLLNode<T> temp = _head;
